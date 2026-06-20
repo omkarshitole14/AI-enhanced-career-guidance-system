@@ -103,9 +103,13 @@ def predict():
 
         resume_file.save(filepath)
 
-        resume_text = extract_text_from_pdf(filepath)
-
-        detected_skills = extract_skills(resume_text)
+        try:
+            resume_text = extract_text_from_pdf(filepath)
+            detected_skills = extract_skills(resume_text)
+        except Exception as e:
+            print("Resume parsing failed:", e)
+            resume_text = ""
+            detected_skills = []
 
     # User Input For Model
     input_data = {
@@ -120,14 +124,27 @@ def predict():
 
     print("Input Dataframe:")
     print(input_df)
-    # predict career
-    career = model.predict(input_df)[0]
 
-    # Prediction Confidence
-    confidence = round(
-    max(model.predict_proba(input_df)[0]) * 100,
-    2
-)
+    try:
+        # predict career
+        career = model.predict(input_df)[0]
+
+        # Prediction Confidence
+        confidence = round(
+            max(model.predict_proba(input_df)[0]) * 100,
+            2
+        )
+    except Exception as e:
+        print("Prediction failed:", e)
+        return render_template(
+            "result.html",
+            career="Unable to predict",
+            confidence=0,
+            score=0,
+            skills=detected_skills,
+            missing=[],
+            roadmap=[]
+        )
 
     print("Confidence:", confidence)
     # Missing Skills
