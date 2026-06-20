@@ -8,12 +8,12 @@ career_skills = {
         "DSA"
     ],
 
-    "Data Scientist": [
+    "Data Analyst": [
         "Python",
-        "Machine Learning",
-        "Pandas",
-        "Statistics",
-        "SQL"
+        "SQL",
+        "Excel",
+        "Power BI",
+        "Statistics"
     ],
 
     "Business Analyst": [
@@ -30,11 +30,45 @@ career_skills = {
         "Python"
     ],
 
-    "AI Engineer": [
+    "ML Engineer": [
         "Python",
         "Deep Learning",
         "Machine Learning",
-        "TensorFlow"
+        "TensorFlow",
+        "Pandas"
+    ],
+
+    "Research Scientist": [
+        "Python",
+        "Statistics",
+        "Machine Learning"
+    ],
+
+    "Marketing Executive": [
+        "SEO",
+        "Sales",
+        "Communication",
+        "Digital Marketing"
+    ],
+
+    "Financial Analyst": [
+        "Finance",
+        "Excel",
+        "Accounting",
+        "Financial Modeling"
+    ],
+
+    "Junior Accountant": [
+        "Accounting",
+        "Tally",
+        "GST",
+        "Excel"
+    ],
+
+    "School Counselor": [
+        "Counseling",
+        "Communication",
+        "Teaching"
     ]
 }
 
