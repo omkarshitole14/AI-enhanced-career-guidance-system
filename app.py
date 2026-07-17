@@ -1,4 +1,9 @@
 from flask import Flask, render_template, request
+import boto3
+
+s3 = boto3.client('s3', region_name='eu-north-1')
+BUCKET_NAME = 'career-guidance-resumes-omkar'
+
 import os
 import joblib
 import pandas as pd
@@ -102,6 +107,8 @@ def predict():
         )
 
         resume_file.save(filepath)
+        s3.upload_file(filepath, BUCKET_NAME, resume_file.filename)     
+        print("Uploaded to S3:", resume_file.filename)
 
         try:
             resume_text = extract_text_from_pdf(filepath)
